@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/stuff', (res, next) => {
+app.use('/api/stuff', (req, res, next) => {
   const stuff = [
     {
       _id: 'oeihfzeoi',
