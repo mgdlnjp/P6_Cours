@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 const Thing = require("./models/Thing");
 
+const path = require('path');
+
 const stuffRoutes = require("./routes/stuff");
 
 const bodyParser = require("body-parser");
@@ -12,7 +14,7 @@ const userRoutes = require("./routes/user");
 
 mongoose
   .connect(
-    "mongodb+srv://user:(password)@cluster0.ykcu8qz.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://magdeleinejpierre:Openclassrooms@cluster0.ykcu8qz.mongodb.net/?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
@@ -42,5 +44,6 @@ app.use(bodyParser.json());
 
 app.use("/api/stuff", stuffRoutes);
 app.use("/api/auth", userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images'))); //ask TYRD
 
 module.exports = app;
